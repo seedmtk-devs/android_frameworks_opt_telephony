@@ -1883,4 +1883,14 @@ public class SubscriptionController extends ISub.Stub {
             Binder.restoreCallingIdentity(token);
         }
     }
+    
+    public int getUserNwMode(int idk) {
+        return Settings.System.getInt(mContext.getContentResolver(),
+            Settings.System.NETWORK_PREFERRED_MODE, 0);
+    }
+    
+    public void setUserNwMode(int idk, int mode) {
+        Settings.System.putInt(mContext.getContentResolver(),
+            Settings.System.NETWORK_PREFERRED_MODE, mode >= 0 ? mode : 0);
+    }
 }
